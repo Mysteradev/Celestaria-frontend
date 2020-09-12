@@ -1,8 +1,8 @@
 <template>
   <div class="column is-4">
     <div class="inner-card">
-      <h1>{{title}}</h1>
-      <img class="image thumbnail" :src="url" alt="Image de présentation">
+      <h2>{{title}}</h2>
+      <img class="image thumbnail" :src="url" alt="Image de présentation" @click="openLightbox">
       <span class="openIcon">&circlearrowleft;</span>
     </div>
   </div>
@@ -19,6 +19,11 @@
         url: {
           type: String,
           required: true
+        }
+      },
+      methods: {
+        openLightbox() {
+          this.$emit("event-open-lightbox")
         }
       }
     }
