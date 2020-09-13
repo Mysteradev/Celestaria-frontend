@@ -1,8 +1,8 @@
 <template>
-  <div class="column is-4">
+  <div class="column is-4 video-card">
+    <h2>{{title}}</h2>
     <div class="inner-card">
-      <h2>{{title}}</h2>
-      <img class="image thumbnail" :src="url" alt="Image de présentation" @click="openLightbox">
+      <img class="image thumbnail" :src="imageUrl" alt="Image de présentation" @click="openLightbox">
       <span class="openIcon">&circlearrowleft;</span>
     </div>
   </div>
@@ -16,7 +16,7 @@
           type: String,
           required: true
         },
-        url: {
+        imageUrl: {
           type: String,
           required: true
         }
@@ -30,13 +30,19 @@
 </script>
 
 <style lang="scss" scoped>
+.video-card {
+  transition: .5s all;
+  border-radius: 5px;
+
   .inner-card {
-    transition: .5s all;
+    -webkit-box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.75);
+    cursor: pointer;
 
     .thumbnail {
       max-height: 250px;
       width: 100%;
-      border-radius: 5px;
     }
 
     .openIcon {
@@ -53,9 +59,10 @@
       color: #FFFFFF;
       cursor: pointer;
     }
-
-    &:hover {
-      transform: translateY(-5px);
-    }
   }
+
+  &:hover {
+    transform: translateY(-5px);
+  }
+}
 </style>
