@@ -7,13 +7,13 @@
        <h3 class="is-size-5">Le film interactif où VOUS avez les clés du jeu</h3>
      </div>
      <div class="column">
-       <img :src="require('@/assets/img/img-home.jpg')" alt="Image home page" class="image-home media-content">
+         <img :src="require('@/assets/img/img-home.jpg')" alt="Image home page" class="image-home media-content">
      </div>
    </div>
    <div class="columns mt-5 mb-5">
      <div class="column has-text-centered">
        <h1 class="is-size-1">Comment ça marche ?</h1>
-       <h3 class="is-siza-5">Quelques aides, pour comprendre comment marche le site . . .</h3>
+       <h3 class="is-size-5">Quelques aides, pour comprendre comment marche le site . . .</h3>
      </div>
    </div>
    <div class="columns mt-5 mb-5">
@@ -21,7 +21,7 @@
        <img :src="require('@/assets/img/img-home.jpg')" alt="Image home page" class="image-home image">
      </div>
    </div>
-   <div class="columns mt-5">
+   <div class="columns mt-5 mb-5">
      <div class="column has-text-centered">
        <p>Lancer le film</p>
        <img :src="require('@/assets/img/play-circle.svg')" alt="Play">
@@ -43,6 +43,9 @@
        <img :src="require('@/assets/img/share-2.svg')" alt="Share">
      </div>
    </div>
+   <div class="columns mt-5">
+     <h3 class="is-size-3">Retrouver ici des films d'autres utilisateurs</h3>
+   </div>
    <listfilm/>
    </section>
  </div>
@@ -63,8 +66,3 @@
   }
 </script>
 
-<style>
-  .image-home{
-    border-radius: 1rem;
-  }
-</style>
