@@ -1,11 +1,10 @@
 <template>
-    <div>
-      <nav class="navbar is-light is-spaced" role="navigation" aria-label="main navigation">
+    <div class="container">
+      <nav class="navbar is-spaced" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
           <a class="navbar-item" href="">
             Celestaria
           </a>
-
           <div role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample" @click="isOpen = !isOpen" :class="{ 'is-active': isOpen }">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
@@ -40,6 +39,4 @@
     }
 </script>
 
-<style scoped>
 
-</style>
