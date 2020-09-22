@@ -13,7 +13,7 @@
         :speed="2"
         primaryColor="#f3f3f3"
         secondaryColor="#ecebeb"
-        v-if="videoMaker.isLoading"
+        v-if="isLoading"
       >
         <rect x="12" y="0" rx="3" ry="3" width="318" height="262" />
         <rect x="354" y="0" rx="3" ry="3" width="318" height="262" />
@@ -33,7 +33,7 @@
 </template>
 
 <script>
-  import { mapState, mapMutations, mapActions } from 'vuex';
+  import {mapMutations, mapActions, mapGetters} from 'vuex';
   import { ContentLoader } from 'vue-content-loader';
   import Video from "./Video";
   import Lightbox from "@/components/lightbox/Lightbox";
@@ -56,12 +56,12 @@
     mounted() {
       this.getAllVideosList();
     },
-    computed: mapState([
-      'videoMaker/videos',
-      'videoMaker/isLoading',
-      'videoMaker/chapter',
-      'videoMaker/activeVideo'
-    ]),
+    computed: mapGetters({
+      isLoading: 'videoMaker/getIsLoading',
+      videos: 'videoMaker/getVideos',
+      activeVideo: 'videoMaker/getActiveVideo',
+      chapter: 'videoMaker/getChapter'
+    }),
     methods: {
       ...mapMutations({
         setNewCurrentChapter: 'videoMaker/SET_NEW_CURRENT_CHAPTER',

@@ -44,13 +44,13 @@ export default {
 <style lang="scss" scoped>
   .flat-input {
     border: none;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid #929da9;
     border-radius: 0;
     box-shadow: none;
     font-size: 32px;
 
     &::placeholder {
-      color: #34495e;
+      color: #929da9;
     }
   }
 

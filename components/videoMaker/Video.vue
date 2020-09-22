@@ -23,7 +23,7 @@
 </template>
 
 <script>
-    import { mapState, mapMutations } from 'vuex';
+    import { mapGetters, mapMutations } from 'vuex';
     import { faCompress } from '@fortawesome/free-solid-svg-icons';
     import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
     import { library } from "@fortawesome/fontawesome-svg-core";
@@ -49,9 +49,9 @@
           required: true
         }
       },
-      computed: mapState([
-        'videoMaker/activeVideo'
-      ]),
+      computed: mapGetters({
+        activeVideo: 'videoMaker/getActiveVideo'
+      }),
       methods: {
         ...mapMutations({
           setActiveVideo: 'videoMaker/SET_ACTIVE_VIDEO'
