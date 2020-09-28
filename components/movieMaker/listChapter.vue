@@ -6,7 +6,7 @@
       </div>
     </div>
     <div class="columns is-multiline" v-if="!showRecap">
-      <Video v-for="video in videos" :key="video.id" :id="video.id" :thumbnailUrl="video.download_url" :videoUrl="video.videoUrl" :title="video.author" @event-open-lightbox="openLightbox" v-lightbox/>
+      <Video v-for="video in videos" :key="video.id" :id="video.id" :thumbnailUrl="video.download_url" :videoUrl="video.videoUrl" :title="video.author" :show-fullscreen-button="true" @event-open-lightbox="openLightbox" v-lightbox/>
       <content-loader
         :width="1368"
         :height="548"

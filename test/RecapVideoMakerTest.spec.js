@@ -1,6 +1,6 @@
 import {mount, shallowMount} from "@vue/test-utils";
 import { describe, it } from "@jest/globals";
-import RecapVideoMaker from "@/components/videoMaker/RecapVideoMaker.vue";
+import RecapVideoMaker from "@/components/movieMaker/RecapVideoMaker.vue";
 
 describe('RecapVideoMakerTest', () => {
   it('Should test if small text indicator is displayed if title is under 3 chars', () => {

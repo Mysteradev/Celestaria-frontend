@@ -11,7 +11,7 @@
           <div class="media-content">
             <p class="title is-5">{{ title }}</p>
           </div>
-          <div class="media-right clickable">
+          <div v-if="showFullscreenButton" class="media-right clickable">
             <span class="icon rounded-icon" @click="openLightbox">
               <FontAwesomeIcon :icon="['fas', 'compress']"/>
             </span>
@@ -47,14 +47,17 @@
         thumbnailUrl: {
           type: String,
           required: true
+        },
+        showFullscreenButton: {
+          type: Boolean
         }
       },
       computed: mapGetters({
-        activeVideo: 'videoMaker/getActiveVideo'
+        activeVideo: 'movieMaker/getActiveVideo'
       }),
       methods: {
         ...mapMutations({
-          setActiveVideo: 'videoMaker/SET_ACTIVE_VIDEO'
+          setActiveVideo: 'movieMaker/SET_ACTIVE_VIDEO'
         }),
         openLightbox() {
           this.$emit("event-open-lightbox");
@@ -72,6 +75,7 @@
     height: 100%;
     transition: .5s;
     border-radius: 10px;
+    cursor: pointer;
 
     img {
       border-radius: 10px 10px 0 0;

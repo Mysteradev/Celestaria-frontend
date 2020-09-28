@@ -6,19 +6,23 @@
       </div>
     </div>
     <div class="columns" >
-      <div class="column" v-for="video in videos">
+      <Video class="column" v-for="video in videos" :thumbnail-url="video.download_url" :id="video.id" :title="video.author" :key="video.id">
         <p class="has-text-centered">{{ video.author }}</p>
         <a :href="video.download_url">
           <img :src="video.download_url" alt="Miniature d'un chapitre vidéo">
         </a>
-      </div>
+      </Video>
     </div>
   </div>
 </template>
 <script>
 
+//TODO delete this component and use the shared one
+
+import Video from "@/components/movieMaker/Video";
 export default {
-  name: "listfilm",
+  name: "listMovies",
+  components: {Video},
   data() {
     return {
       videos: {}

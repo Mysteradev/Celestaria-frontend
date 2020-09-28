@@ -1,20 +1,24 @@
 export default {
   /**
-   *
+   * Fetch the movies from database
    * @param commit
+   * @param trigger
    * @returns {Promise<void>}
    * @constructor
    */
-  GET_ALL_MOVIES: async function({commit}) {
+  FETCH_MOVIES: async function({commit}, trigger) {
+    console.log('bjk');
     commit('SET_LOADING', true);
+    let limit = trigger === "movies" ? 20 : 4
     //TODO Changer l'URL de l'API pour récuperer les différents films
-    await this.$axios.$get(`https://picsum.photos/v2/list?limit=30`)
+    await this.$axios.$get(`https://picsum.photos/v2/list?limit=${limit}`)
       .then(response => {
         commit('SET_MOVIES', { list: response });
         commit('SET_LOADING', false);
-      }, err => {
-        console.log(`An error occured ${err}`)
       })
+        .catch(err => {
+          console.log(`An error occured ${err}`)
+        })
     ;
   }
 }
