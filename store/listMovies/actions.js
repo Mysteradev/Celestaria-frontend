@@ -7,7 +7,6 @@ export default {
    * @constructor
    */
   FETCH_MOVIES: async function({commit}, trigger) {
-    console.log('bjk');
     commit('SET_LOADING', true);
     let limit = trigger === "movies" ? 20 : 4
     //TODO Changer l'URL de l'API pour récuperer les différents films

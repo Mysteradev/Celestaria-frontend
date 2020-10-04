@@ -18,6 +18,8 @@
       </div>
     </section>
     <ListMovies trigger-page="movies"/>
+
+    <Footer/>
   </div>
 </template>
 
@@ -26,12 +28,14 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { library } from "@fortawesome/fontawesome-svg-core";
 import ListMovies from "@/components/movies/listMovies";
+import Footer from "@/components/shared/Footer";
 
 library.add(faSearch);
 
 export default {
   name: "movies",
   components: {
+    Footer,
     ListMovies,
     FontAwesomeIcon,
   },
