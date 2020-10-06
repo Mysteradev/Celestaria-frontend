@@ -3,8 +3,6 @@
     <div class="columns is-multiline">
       <Video v-for="movie in movies" :key="movie.id" :id="movie.id" :thumbnailUrl="movie.download_url" :videoUrl="movie.videoUrl" :title="movie.author" />
     </div>
-
-    <Pagination/>
   </div>
 </template>
 

@@ -4,19 +4,20 @@
     <a class="pagination-next">Suivant</a>
     <ul class="pagination-list">
       <li>
-        <a class="pagination-link is-current" :aria-label="`Page ${currentPage}`" aria-current="page">{{currentPage}}</a>
+        <NuxtLink :to="`/movies/${getCurrentPage}`" class="pagination-link is-current" :aria-label="`Page ${getCurrentPage}`" aria-current="page">{{getCurrentPage}}</NuxtLink>
       </li>
       <li>
-        <a class="pagination-link" :aria-label="`Aller à la page ${getNextPage}`">{{getNextPage}}</a>
+        <NuxtLink :to="`/movies/${getNextPage}`" class="pagination-link" :aria-label="`Aller à la page ${getNextPage}`">{{getNextPage}}</NuxtLink>
       </li>
       <li>
-        <a class="pagination-link" :aria-label="`Aller à la page ${getNextPageOfNextPage}`">{{getNextPageOfNextPage}}</a>
+        <NuxtLink :to="`/movies/${getNextPageOfNextPage}`" class="pagination-link" :aria-label="`Aller à la page ${getNextPageOfNextPage}`">{{getNextPageOfNextPage}}</NuxtLink>
       </li>
     </ul>
   </nav>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "Pagination",
   data() {
@@ -25,12 +26,15 @@ export default {
     }
   },
   computed: {
+    ...mapGetters({
+      getCurrentPage: 'listMovies/getCurrentPage'
+    }),
     /**
      * Get the next number of the current page
      * @returns {number}
      */
     getNextPage(){
-      return this.currentPage + 1
+      return Number(this.getCurrentPage) + 1
     },
 
     /**
@@ -38,7 +42,7 @@ export default {
      */
     //TODO That's omega shit
     getNextPageOfNextPage() {
-      return this.getNextPage + 1
+      return Number(this.getNextPage) + 1
     }
   }
 }

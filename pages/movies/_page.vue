@@ -18,8 +18,6 @@
       </div>
     </section>
     <ListMovies trigger-page="movies"/>
-
-    <Footer/>
   </div>
 </template>
 
@@ -28,14 +26,13 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { library } from "@fortawesome/fontawesome-svg-core";
 import ListMovies from "@/components/movies/listMovies";
-import Footer from "@/components/shared/Footer";
+import { mapMutations } from "vuex";
 
 library.add(faSearch);
 
 export default {
   name: "movies",
   components: {
-    Footer,
     ListMovies,
     FontAwesomeIcon,
   },
@@ -44,25 +41,33 @@ export default {
       search: ''
     }
   },
+  methods: {
+    ...mapMutations({
+      setCurrentPage: 'listMovies/SET_CURRENT_PAGE'
+    })
+  },
+  mounted() {
+    this.setCurrentPage(this.$route.params.page)
+  }
 }
 </script>
 
 <style lang="scss" scoped>
-  .flat-input {
-    border: none;
-    border-bottom: 2px solid #929da9;
-    border-radius: 0;
-    box-shadow: none;
-    font-size: 32px;
+.flat-input {
+  border: none;
+  border-bottom: 2px solid #929da9;
+  border-radius: 0;
+  box-shadow: none;
+  font-size: 32px;
 
-    &::placeholder {
-      color: #929da9;
-    }
+  &::placeholder {
+    color: #929da9;
   }
+}
 
-  .rounded-button {
-    border: none;
-    padding: 11px;
-    font-size: 32px;
-  }
+.rounded-button {
+  border: none;
+  padding: 11px;
+  font-size: 32px;
+}
 </style>

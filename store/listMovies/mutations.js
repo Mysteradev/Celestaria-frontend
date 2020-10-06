@@ -5,5 +5,9 @@ export default {
 
   SET_LOADING: (state, isLoading) => {
     state.isLoading = isLoading;
+  },
+
+  SET_CURRENT_PAGE: (state, newCurrentPage) => {
+    state.currentPage = newCurrentPage
   }
 }
