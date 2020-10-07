@@ -9,5 +9,9 @@ export default {
 
   SET_CURRENT_PAGE: (state, newCurrentPage) => {
     state.currentPage = newCurrentPage
+  },
+
+  SET_MAX_PAGE: (state, maxPage) => {
+    state.maxPage = maxPage
   }
 }

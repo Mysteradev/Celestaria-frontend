@@ -1,40 +1,36 @@
 <template>
   <nav class="pagination is-centered pb-5" role="navigation" aria-label="pagination">
-    <a class="pagination-previous">Précédent</a>
+    <NuxtLink :to="`/movies/${getPreviousPage}`" class="pagination-previous" :disabled="getCurrentPage < 2">Précédent</NuxtLink>
     <a class="pagination-next">Suivant</a>
     <ul class="pagination-list">
       <li>
         <NuxtLink :to="`/movies/${getCurrentPage}`" class="pagination-link is-current" :aria-label="`Page ${getCurrentPage}`" aria-current="page">{{getCurrentPage}}</NuxtLink>
       </li>
       <li>
-        <NuxtLink :to="`/movies/${getNextPage}`" class="pagination-link" :aria-label="`Aller à la page ${getNextPage}`">{{getNextPage}}</NuxtLink>
+        <NuxtLink :to="`/movies/${getNextPage}`" @click.native="setCurrentPage(getCurrentPage)" class="pagination-link" :aria-label="`Aller à la page ${getNextPage}`">{{getNextPage}}</NuxtLink>
       </li>
       <li>
-        <NuxtLink :to="`/movies/${getNextPageOfNextPage}`" class="pagination-link" :aria-label="`Aller à la page ${getNextPageOfNextPage}`">{{getNextPageOfNextPage}}</NuxtLink>
+        <NuxtLink :to="`/movies/${getNextPageOfNextPage}`" @click.native="setCurrentPage(getCurrentPage)" class="pagination-link" :aria-label="`Aller à la page ${getNextPageOfNextPage}`">{{getNextPageOfNextPage}}</NuxtLink>
       </li>
     </ul>
   </nav>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
 export default {
   name: "Pagination",
-  data() {
-    return {
-      currentPage: 1
-    }
-  },
   computed: {
     ...mapGetters({
       getCurrentPage: 'listMovies/getCurrentPage'
     }),
+
     /**
      * Get the next number of the current page
      * @returns {number}
      */
     getNextPage(){
-      return Number(this.getCurrentPage) + 1
+      return Number(this.getCurrentPage) + 1;
     },
 
     /**
@@ -42,7 +38,34 @@ export default {
      */
     //TODO That's omega shit
     getNextPageOfNextPage() {
-      return Number(this.getNextPage) + 1
+      return Number(this.getNextPage) + 1;
+    },
+
+    /**
+     * Get the previous number page
+     * @returns {number}
+     */
+    getPreviousPage() {
+      if(this.getCurrentPage > 1) {
+        return Number(this.getCurrentPage) - 1;
+      }
+
+      return 1;
+    }
+  },
+  methods: {
+    ...mapMutations({
+      setCurrentPage: 'listMovies/SET_CURRENT_PAGE'
+    })
+  },
+  mounted() {
+    // OR operator short circuit
+    // TODO May not be needed
+    this.setCurrentPage(this.$route.params.page || 1);
+  },
+  watch: {
+    $route() {
+      this.setCurrentPage(this.$route.params.page);
     }
   }
 }
