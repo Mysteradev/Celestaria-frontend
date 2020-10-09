@@ -8,7 +8,7 @@ export default {
    */
   FETCH_MOVIES: async function({commit}, trigger) {
     commit('SET_LOADING', true);
-    let limit = trigger === "movies" ? 20 : 4
+    let limit = trigger === "movies" ? 12 : 4
     //TODO Changer l'URL de l'API pour récuperer les différents films
     await this.$axios.$get(`https://picsum.photos/v2/list?limit=${limit}`)
       .then(response => {
